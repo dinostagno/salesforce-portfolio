@@ -1,3 +1,28 @@
+/*
+ * Copyright (c) 2026 Dino Stagno
+ *
+ * Licensed for internal use within Salesforce applications.
+ * This file is provided "as is", without warranties of any kind,
+ * either express or implied.
+ */
+
+/**
+ * @group Integration Framework
+ * @author Dino Stagno
+ * @description
+ * HttpIntegrationClient is a centralized HTTP client responsible for executing
+ * outbound callouts using Salesforce Named Credentials.
+ *
+ * This class provides a consistent and reusable way to:
+ * - Validate HTTP methods and input parameters.
+ * - Build endpoints using Named Credentials.
+ * - Apply explicit timeouts and dynamic headers.
+ * - Send HTTP requests with optional request bodies.
+ *
+ * This client is intentionally lightweight and transport-focused.
+ * Business logic, response interpretation, retries, and logging
+ * should be handled by higher-level service layers.
+ */
 public with sharing class HttpIntegrationClient {
 
     private static final Integer DEFAULT_TIMEOUT = 30000;
@@ -25,7 +50,7 @@ public with sharing class HttpIntegrationClient {
 
         HttpRequest req = new HttpRequest();
 
-        // 🔒 Normalización segura del path
+        // Normalize request path
         String normalizedPath = request.path != null
             ? (request.path.startsWith('/') ? request.path : '/' + request.path)
             : '';
@@ -33,21 +58,21 @@ public with sharing class HttpIntegrationClient {
         req.setEndpoint('callout:' + namedCredentialName + normalizedPath);
         req.setMethod(method);
 
-        // ⏱️ Timeout explícito (Salesforce recomienda siempre setearlo)
+        // Apply explicit timeout
         req.setTimeout(
             request.timeoutMs != null
                 ? request.timeoutMs
                 : DEFAULT_TIMEOUT
         );
 
-        // 📦 Headers dinámicos
+        // Apply dynamic headers
         if (request.headers != null) {
             for (String key : request.headers.keySet()) {
                 req.setHeader(key, request.headers.get(key));
             }
         }
 
-        // 📄 Body solo si corresponde
+        // Set request body when applicable
         if (request.body != null && method != 'GET' && method != 'DELETE') {
             req.setHeader('Content-Type', 'application/json');
             req.setBody(JSON.serialize(request.body));
@@ -56,9 +81,8 @@ public with sharing class HttpIntegrationClient {
         try {
             return new Http().send(req);
         } catch (CalloutException ex) {
-            // Aquí normalmente iría logging persistente
+            // Persistent logging can be implemented by higher layers
             throw ex;
         }
     }
 }
-
