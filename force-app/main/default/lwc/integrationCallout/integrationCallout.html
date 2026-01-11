@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="HTTP Integration Test">
+        <div class="slds-p-around_medium">
+
+            <lightning-button
+                label="Ejecutar Callout"
+                variant="brand"
+                onclick={handleCallout}
+                disabled={loading}>
+            </lightning-button>
+
+            <template if:true={loading}>
+                <lightning-spinner alternative-text="Procesando"></lightning-spinner>
+            </template>
+
+            <template if:true={response}>
+                <p class="slds-m-top_medium">
+                    <strong>Status Code:</strong> {response.statusCode}
+                </p>
+                <pre>{response.body}</pre>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    {error}
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
