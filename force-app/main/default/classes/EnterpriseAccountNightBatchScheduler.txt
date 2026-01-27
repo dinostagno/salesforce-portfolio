@@ -19,22 +19,22 @@ System.schedule(
 
 SALESFORCE ENTERPRISE BATCH EXECUTION VERIFICATION
 
-Scheduler Registration Verification
-Access Salesforce Setup and navigate to Scheduled Jobs. Confirm the scheduled job name exists and validate the Next Run time and State fields.
+Scheduled Job Validation
+Verify scheduled batch registration using Salesforce Setup. Confirm job name, next execution time and job state.
 
 Path:
 Setup → Scheduled Jobs
 
 Batch Execution Monitoring
-Validate batch execution status using Apex Jobs. Confirm the EnterpriseDataBatchProcessor class appears with Status set to Completed and Failures equal to zero.
+Validate batch execution status and history using Apex Jobs. Confirm the EnterpriseDataBatchProcessor class execution shows Status as Completed and Failures equal to zero.
 
 Path:
 Setup → Apex Jobs
 
 Debug Log Validation
-Review execution logs to validate scheduler trigger, batch start, execute processing and finish execution metrics. Open the latest log generated during the batch execution window.
+Review execution logs to validate scheduler trigger, batch lifecycle execution and finish metrics. Open the most recent log generated during batch execution.
 
-Search keywords inside the log:
+Search keywords inside logs:
 EnterpriseBatchJobScheduler
 EnterpriseDataBatchProcessor
 ENTERPRISE BATCH FINISHED
@@ -43,12 +43,6 @@ Failed Records
 
 Path:
 Setup → Debug Logs
-
-Cron Job Verification
-Confirm Salesforce internal CRON registration for scheduled batch execution. Validate execution history and next scheduled runtime.
-
-Path:
-Setup → Cron Jobs
 
 Scheduled Job Cleanup
 Remove scheduled batch jobs after testing to prevent duplicate executions in production environments.
@@ -63,7 +57,7 @@ Path:
 Setup → Debug Logs → New
 
 Execution Environment Validation
-Confirm Salesforce Org Time Zone configuration before scheduling batch jobs to ensure CRON execution aligns with business operating hours.
+Verify Salesforce Organization Time Zone configuration to ensure CRON execution aligns with business operating hours.
 
 Path:
 Setup → Company Information
@@ -74,6 +68,4 @@ Batch job executed with Completed status.
 No failed records detected.
 Finish method executed correctly.
 Debug logs available and validated.
-CRON registration verified.
-Test jobs removed after validation.
-
+Test scheduled jobs removed after validation.
