@@ -31,7 +31,3 @@ El repositorio sigue una estructura orientada a:
 - Logging estructurado
 - Manejo adecuado de excepciones
 - Testing con cobertura real
-
----
-
-## 📂 Estructura General
