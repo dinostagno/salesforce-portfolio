@@ -7,27 +7,67 @@
 ## 🧠 Sobre este repositorio
 
 Este proyecto no es solo código.  
-Representa experiencia real en:
+Representa experiencia práctica en:
 
 - Desarrollo Apex
 - Lightning Web Components (LWC)
-- Integraciones REST
-- Arquitectura por capas
-- Manejo de límites de plataforma
-- Diseño orientado a escalabilidad
+- Integraciones HTTP
+- Procesamiento Batch y asincrónico
+- Generación dinámica de PDF
+- Manejo estructurado de errores
 
-Aquí se aplican principios que permiten que los proyectos crezcan sin romperse.
+El enfoque está en construir soluciones mantenibles, claras y preparadas para crecer.
 
 ---
 
 ## 🏗 Enfoque de Arquitectura
 
-El repositorio sigue una estructura orientada a:
+Se aplican principios como:
 
 - Separation of Concerns
-- Controllers / Services / Handlers pattern
+- Diseño por capas
 - Integraciones desacopladas
-- Uso de Named Credentials
-- Logging estructurado
-- Manejo adecuado de excepciones
-- Testing con cobertura real
+- Abstracción de clientes HTTP
+- Uso de DTOs para intercambio de datos
+- Manejo consistente de excepciones
+- Logging centralizado
+- Testing con validación lógica real
+
+La intención no es solo que funcione, sino que sea sostenible en el tiempo.
+
+---
+
+## 🔄 Integraciones y Procesamiento
+
+Se contemplan patrones para:
+
+- Consumo de servicios externos
+- Manejo controlado de límites de plataforma
+- Procesamiento Batch y Schedulers
+- Separación clara entre lógica de negocio e integración
+
+---
+
+## 🧪 Testing
+
+Las pruebas están orientadas a:
+
+- Validar comportamiento real
+- Simular integraciones externas
+- Cubrir procesos asincrónicos
+- Garantizar estabilidad evolutiva
+
+---
+
+## 🎯 Objetivo
+
+Este repositorio está destinado a quienes valoran arquitectura clara y soluciones pensadas para escalar dentro del ecosistema Salesforce.
+
+---
+
+## 🙌 Nota Final
+
+Este trabajo refleja experiencia aplicada en escenarios reales.
+
+Espero que sea de utilidad.  
+Muchas gracias por visitar el repositorio.
